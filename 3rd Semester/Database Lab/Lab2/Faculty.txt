@@ -1,0 +1,3 @@
+123456 Karim Professor CSE IUT 2002 99999999
+098765 Taher Assisstant EEE SecondAcademicBuilding 1998 102020
+567899 Jodu AsstProf CSE IUT 2002 99999999

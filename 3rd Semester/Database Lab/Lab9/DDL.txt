@@ -1,0 +1,78 @@
+CREATE TABLE League
+(
+  LeagueID NUMBER,
+  Name VARCHAR2(20),
+  Country VARCHAR2(20),
+  Established Date,
+  CONSTRAINTS PK_League_LeagueID PRIMARY KEY (LeagueID)
+);
+
+CREATE TABLE Manager
+(
+  MID NUMBER,
+  Name VARCHAR2(20),
+  StartDate DATE,
+  EndDate DATE,
+  CONSTRAINTS PK_Manager_MID PRIMARY KEY (MID)
+);
+
+CREATE TABLE Team
+(
+  TeamID NUMBER,
+  TeamName VARCHAR2(20),
+  TeamLocation VARCHAR2(20),
+  Stadium VARCHAR2(30),
+  TotalTrophy NUMBER,
+  ManagerID NUMBER UNIQUE,
+  CONSTRAINTS PK_Team_TeamID PRIMARY KEY (TeamID),
+  CONSTRAINTS FK_Team_MID FOREIGN KEY (ManagerID) REFERENCES Manager(MID)
+);
+
+CREATE TABLE LeagueTeamJunction
+(
+  TeamID NUMBER,
+  LeagueID NUMBER,
+  Season NUMBER,
+  CONSTRAINTS FK_Junc_TeamID FOREIGN KEY (TeamID) REFERENCES Team(TeamID),
+  CONSTRAINTS FK_Junc_LeagueID FOREIGN KEY (LeagueID) REFERENCES League(LeagueID)
+);
+
+CREATE TABLE Player
+(
+  PlayerID NUMBER,
+  Name VARCHAR2(20),
+  Team NUMBER,
+  Nationality VARCHAR2(30),
+  StrongFoot VARCHAR2(30),
+  Skillrating NUMBER,
+  CONSTRAINTS PK_Player_PID PRIMARY KEY (PlayerID),
+  CONSTRAINTS PK_PLayer_TID FOREIGN KEY (Team) REFERENCES Team(TeamID)
+);
+
+CREATE TABLE MatchFixture
+(
+  MatchID NUMBER,
+  Season NUMBER,
+  HomeTeam NUMBER,
+  AwayTeam NUMBER,
+  MatchDate DATE,
+  CONSTRAINTS PK_MF_MatchID PRIMARY KEY (MatchID),
+  CONSTRAINTS FK_MF_HomeTeam FOREIGN KEY (HomeTeam) REFERENCES Team (TeamID),
+  CONSTRAINTS FK_MF_AwayTeam FOREIGN KEY (HomeTeam) REFERENCES Team (TeamID)
+);
+
+CREATE TABLE MatchDetails
+(
+  RecordID NUMBER,
+  Team NUMBER,
+  Match NUMBER,
+  Type VARCHAR2(10),
+  Player NUMBER,
+  Time DATE,
+  Reference NUMBER,
+  CONSTRAINTS PK_MD_ReID PRIMARY KEY (RecordID),
+  CONSTRAINTS FK_MD_MatchID FOREIGN KEY (Match) REFERENCES MatchFixture (MatchID),
+  CONSTRAINTS FK_MD_PlayerID FOREIGN KEY (Player) REFERENCES Player (PlayerID),
+  CONSTRAINTS FK_MD_TeamID FOREIGN KEY (Team) REFERENCES Team (TeamID),
+  CONSTRAINTS FK_MD_Reference FOREIGN KEY (Reference) REFERENCES MatchDetails (RecordID)
+);

@@ -1,0 +1,206 @@
+CREATE TABLE CITIZEN (
+	C_ID NUMBER (3),
+	C_NAME VARCHAR2 (10),
+	C_HOME VARCHAR2 (10),
+	AGE NUMBER (2),
+	OCCUPATION VARCHAR2 (15),
+	GENDER VARCHAR2 (6),
+	SALARY NUMBER,
+	CONSTRAINTS PK_CITIZEN PRIMARY KEY (C_ID)
+);
+
+
+INSERT INTO CITIZEN VALUES (1, 'A', 'Dhaka', 25, 'Teacher', 'Male', 50000);
+INSERT INTO CITIZEN VALUES (2, 'B', 'Dhaka', 56, 'Service', 'Male', 60000);
+INSERT INTO CITIZEN VALUES (3, 'C', 'Ctg', 71, 'Retired', 'Male', 10000);
+INSERT INTO CITIZEN VALUES (4, 'D', 'Ctg', 13, 'Student', 'Female', 500);
+INSERT INTO CITIZEN VALUES (5, 'E', 'Dhaka', 45, 'Service', 'Male', 40000);
+INSERT INTO CITIZEN VALUES (6, 'F', 'Gazipur', 54, 'Doctor', 'Female', 55000);
+INSERT INTO CITIZEN VALUES (7, 'G', 'Gazipur', 65, 'Musician', 'Female', 5000);
+INSERT INTO CITIZEN VALUES (8, 'H', 'Dhaka', 56, 'Engineer', 'Male', 60000);
+INSERT INTO CITIZEN VALUES (9, 'I', 'Ctg', 23, 'Student', 'Male', 1000);
+INSERT INTO CITIZEN VALUES (10, 'J', 'Comilla', 32, 'Teacher', 'Male', 45000);
+INSERT INTO CITIZEN VALUES (11, 'K', 'Comilla', 51, 'Farmer', 'Male', 20000);
+INSERT INTO CITIZEN VALUES (12, 'L', 'Khulna', 15, 'Student', 'Female', 1500);
+INSERT INTO CITIZEN VALUES (13, 'M', 'Ctg', 25, 'Business', 'Male', 100000);
+INSERT INTO CITIZEN VALUES (14, 'N', 'Comilla', 52, 'Doctor', 'Male', 70000);
+INSERT INTO CITIZEN VALUES (15, 'O', 'Gazipur', 53, 'Teacher', 'Male', 50000);
+INSERT INTO CITIZEN VALUES (16, 'P', 'Dhaka', 35, 'Musician', 'Female', 50000);
+INSERT INTO CITIZEN VALUES (17, 'Q', 'Khulna', 43, 'Service', 'Male', 50000);
+INSERT INTO CITIZEN VALUES (18, 'R', 'Khulna', 34, 'Service', 'Female', 45000);
+INSERT INTO CITIZEN VALUES (19, 'S', 'Ctg', 16, 'Student', 'Male', 500);
+
+
+Now try to perform the following queries (on the ‘citizen’ table):
+i.	Show all the values of citizen table
+	
+	SELECT *
+	FROM CITIZEN;
+	
+ii.	Show only the c_name,age and occupation from the table
+	
+	SELECT C_NAME, AGE, OCCUPATION
+	FROM CITIZEN;
+
+iii.	Show the name of the person who are living in Dhaka.
+
+	SELECT C_NAME
+	FROM CITIZEN
+	WHERE C_HOME='Dhaka';
+
+iv.	make a list of people who have income more than 50,000/-
+
+	SELECT *
+	FROM CITIZEN
+	WHERE SALARY>=50000;
+
+v.	show the names and hometowns of those person where the age is less than 45
+
+	SELECT C_NAME,C_HOME
+	FROM CITIZEN
+	WHERE AGE<45;
+
+vi.	make a list of the female citizens
+
+	SELECT *
+	FROM CITIZEN
+	WHERE GENDER='Female';
+
+vii.	What is the maximum salary?
+
+	SELECT MAX(SALARY)
+	FROM CITIZEN;
+
+viii.	Which male person has the maximum income? [Hint: nested query]
+
+	SELECT C_NAME, SALARY
+	FROM CITIZEN
+	WHERE GENDER='Male' AND SALARY= (SELECT MAX(SALARY) FROM CITIZEN WHERE GENDER='Male');	
+	
+
+	*****HAVE U UNDERSTOOD WHY I HAVE CHECKED THE GENDER BOTH IN THE INNER AND OUTER SQL??*****
+
+
+ix.	Which female person has the least income?	[Hint: Nested Query]
+
+	SELECT C_NAME, SALARY
+	FROM CITIZEN
+	WHERE GENDER='Female' AND SALARY= (SELECT MIN(SALARY) 	FROM CITIZEN WHERE GENDER='Female');
+
+x.	Which teacher has the most income?
+
+	SELECT C_NAME, OCCUPATION 
+	FROM CITIZEN
+	WHERE OCCUPATION='Teacher' AND SALARY=(SELECT MAX(SALARY)FROM CITIZEN WHERE OCCUPATION = 'Teacher');
+	
+xi.	Who is the most earning student?
+
+	SELECT C_NAME, OCCUPATION 
+	FROM CITIZEN
+	WHERE OCCUPATION='Student' AND SALARY=(SELECT MAX(SALARY) FROM CITIZEN WHERE OCCUPATION = 'Student');	
+
+xii.	Show the list of citizens where the occupations might be either doctor or teacher.
+
+	SELECT * 
+	FROM CITIZEN
+	WHERE OCCUPATION='Teacher' OR OCCUPATION='Doctor';
+
+xiii.	Make a ordered list of engineers according to the salary
+
+	SELECT *
+	FROM CITIZEN
+	WHERE OCCUPATION='Engineer'
+	ORDER BY SALARY;
+
+xiv.	Make a descending ordered list based on the age and show the names and age only.
+
+	SELECT C_NAME, AGE
+	FROM CITIZEN
+	ORDER BY AGE;
+
+xv.	What is the average salary of this table?
+
+	SELECT AVG(SALARY)
+	FROM CITIZEN;
+
+xvi.	What is the total income of all the teachers of the table?
+
+	SELECT SUM(SALARY)
+	FROM CITIZEN
+	WHERE OCCUPATION='Teacher';
+
+xvii.	What is the average income of the doctors?
+
+	SELECT AVG(SALARY)
+	FROM CITIZEN
+	WHERE OCCUPATION='Doctor';
+
+xviii.	Show the name of the least earning student?
+
+	SELECT C_NAME,SALARY
+	FROM CITIZEN
+	WHERE OCCUPATION='Student' AND SALARY=( SELECT MIN(SALARY) FROM CITIZEN WHERE OCCUPATION='Student');
+	
+xix.	Show the description of the maximum earning teacher.
+
+	SELECT *
+	FROM CITIZEN
+	WHERE OCCUPATION='Teacher' AND SALARY= (SELECT MAX(SALARY) FROM CITIZEN WHERE OCCUPATION='Teacher');
+
+xx.	Make a list of all the distinct c_home values in the tables. Rename the output column as ‘Unique_District’
+
+	SELECT DISTINCT C_HOME AS UNIQUE_DISTRICT
+	FROM CITIZEN;
+	
+xxi.	What will be the age of all the employees after 5 years?
+	
+	SELECT C_NAME , AGE+5
+	FROM CITIZEN;
+
+xxii.	What is the average age of the students?
+
+	SELECT AVG(AGE)
+	FROM CITIZEN
+	WHERE OCCUPATION='Student';
+
+xxiii.	Make a list of male citizens who earn more than 40000 per month.
+
+	SELECT * 
+	FROM CITIZEN
+	WHERE GENDER='Male' AND SALARY>40000;
+
+xxiv.	Make a list of citizen which will show how many citizen belong to which occupations. [hint-use group by statement]
+
+	SELECT OCCUPATION, COUNT(C_NAME)
+	FROM CITIZEN
+	GROUP BY OCCUPATION;
+
+
+xxv.	Find the maximum salary of each occupation.
+
+	SELECT OCCUPATION, MAX(SALARY)
+	FROM CITIZEN
+	GROUP BY OCCUPATION;
+
+xxvi.	Categorize the average salary of male citizens based on occupation
+
+	SELECT OCCUPATION , AVG(SALARY)
+	FROM CITIZEN
+	WHERE GENDER='Male'
+	GROUP BY OCCUPATION;
+
+xxvii.	Categorize the average salary of male citizens based on occupation where the average salary is at least 10000.
+	
+	SELECT OCCUPATION , AVG(SALARY)
+	FROM CITIZEN
+	WHERE GENDER='Male'
+	GROUP BY OCCUPATION
+	HAVING AVG(SALARY)>10000;
+
+xxviii.	Find the STD, DEPT table from the referencedTable doc. create the tables and insert the values. 
+	a.Now find a list containing the std_name, std_cg and dept_name of the CSE department.
+
+	SELECT STD.STD_NAME, DEPT.DEPT_NAME, STD.STD_CG
+	FROM STD,DEPT
+	WHERE STD.STD_DEPT= DEPT.DEPT_ID;
+

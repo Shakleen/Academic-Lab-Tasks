@@ -1,0 +1,154 @@
+create table department
+(
+	id number,
+	name varchar2(30),
+	estd number,
+	constraints pk_did primary key (id)
+);
+
+create table students
+(
+	id number,
+	name varchar2(30),
+	address varchar2(30),
+	did number,
+	constraints pk_sid primary key (id),
+	constraints fk_did foreign key (did) references department (id)
+);
+
+create table course 
+(
+	id varchar2(30),
+	name varchar2(30),
+	credit number,
+	constraints pk_id primary key (id)
+);
+
+create table studentTakesCourse
+(
+	sid number,
+	cid varchar2(30),
+	semester varchar2(30) check (semester='summer' or semester='winter'),
+	year number,
+	subjectGrade numeric(3,2),
+	constraints fk_sid foreign key (sid) references students (id),
+	constraints fk_cid foreign key (cid) references course (id)
+);
+
+
+// Department
+insert into department values (1, 'cse', 1998);
+insert into department values (2, 'mce', 1998);
+insert into department values (3, 'swe', 2017);
+
+// Student
+insert into students values (1, 'habba', 'pabna', 1);
+insert into students values (2, 'panda', 'dhaka', 1);
+insert into students values (3, 'cadet', 'sirajganj', 1);
+insert into students values (4, 'rubel', 'dhanmondi', 1);
+
+// Course
+insert into course values ('cse101', 'c', 3);
+insert into course values ('cse102', 'intro to computer', 3);
+insert into course values ('cse103', 'database', 3);
+
+// Student takes course
+insert into studentTakesCourse values (1, 'cse101', 'winter', 2014, 4.00);
+insert into studentTakesCourse values (1, 'cse102', 'winter', 2014, 3.75);
+insert into studentTakesCourse values (2, 'cse101', 'winter', 2014, 3.50);
+insert into studentTakesCourse values (2, 'cse102', 'summer', 2014, 3.75);
+
+
+// i)
+CREATE VIEW StudentDepart AS
+Select s.id, s.name, s.address, d.name departmentName
+From students s, department d
+Where s.did = d.id;
+
+// ii)
+CREATE VIEW SIDOneInfo AS
+select sd.id SID, sd.departmentName DName, sd.name SName, c.id CID, stc.subjectGrade SGrade, stc.semester, c.credit Credit
+From StudentDepart sd, course c, studentTakesCourse stc
+where sd.id = stc.sid AND c.id = stc.cid AND sd.id = 1;
+
+// a)
+select sdo.SName, sdo.CID Course
+from SIDOneInfo sdo;
+
+// b)
+select sum(sdo.SGrade * sdo.Credit) / sum (sdo.Credit) as CGPA
+from SIDOneInfo sdo;
+
+// c)
+create view Name&Course AS
+Select sdo.SName Name, sdo.CID
+From SIDOneInfo sdo
+order by sdo.CID;
+
+// Task 2:
+CREATE TABLE CITIZEN (
+C_ID NUMBER (3),
+C_NAME VARCHAR2 (10),
+C_HOME VARCHAR2 (10),
+AGE NUMBER (2),
+OCCUPATION VARCHAR2 (15),
+GENDER VARCHAR2 (6),
+SALARY NUMBER,
+CONSTRAINTS PK_CITIZEN PRIMARY KEY (C_ID)
+);
+INSERT INTO CITIZEN VALUES (1, 'A', 'Dhaka', 25, 'Teacher', 'Male', 50000);
+INSERT INTO CITIZEN VALUES (2, 'B', 'Dhaka', 56, 'Service', 'Male', 60000);
+INSERT INTO CITIZEN VALUES (3, 'C', 'Ctg', 71, 'Retired', 'Male', 10000);
+INSERT INTO CITIZEN VALUES (4, 'D', 'Ctg', 13, 'Student', 'Female', 500);
+INSERT INTO CITIZEN VALUES (5, 'E', 'Dhaka', 45, 'Service', 'Male', 40000);
+INSERT INTO CITIZEN VALUES (6, 'F', 'Gazipur', 54, 'Doctor', 'Female', 55000);
+INSERT INTO CITIZEN VALUES (7, 'G', 'Gazipur', 65, 'Musician', 'Female', 5000);
+INSERT INTO CITIZEN VALUES (8, 'H', 'Dhaka', 56, 'Engineer', 'Male', 60000);
+INSERT INTO CITIZEN VALUES (9, 'I', 'Ctg', 23, 'Student', 'Male', 1000);
+INSERT INTO CITIZEN VALUES (10, 'J', 'Comilla', 32, 'Teacher', 'Male', 45000);
+INSERT INTO CITIZEN VALUES (11, 'K', 'Comilla', 51, 'Farmer', 'Male', 20000);
+INSERT INTO CITIZEN VALUES (12, 'L', 'Khulna', 15, 'Student', 'Female', 1500);
+INSERT INTO CITIZEN VALUES (13, 'M', 'Ctg', 25, 'Business', 'Male', 100000);
+INSERT INTO CITIZEN VALUES (14, 'N', 'Comilla', 52, 'Doctor', 'Male', 70000);
+INSERT INTO CITIZEN VALUES (15, 'O', 'Gazipur', 53, 'Teacher', 'Male', 50000);
+INSERT INTO CITIZEN VALUES (16, 'P', 'Dhaka', 35, 'Musician', 'Female', 50000);
+INSERT INTO CITIZEN VALUES (17, 'Q', 'Khulna', 43, 'Service', 'Male', 50000);
+INSERT INTO CITIZEN VALUES (18, 'R', 'Khulna', 34, 'Service', 'Female', 45000);
+INSERT INTO CITIZEN VALUES (19, 'S', 'Ctg', 16, 'Student', 'Male', 500);
+
+// i)
+select salary 
+From Citizen
+where rownum<=5
+Order by Salary;
+
+// ii)
+(select min(salary) from citizen)
+UNION
+(select max(salary) from citizen);
+
+// iii)
+select salary 
+from  Citizen
+where salary = (Select min(Salary) from (select salary from citizen where rownum <= 3 order by Salary desc));
+
+// iv)
+(Select min(salary) from citizen)
+UNION
+(select salary  from  Citizen
+where salary = (Select min(Salary) from (select salary from citizen where rownum <= 2 order by Salary desc)));
+
+// Task 3
+CREATE SEQUENCE SEQ_PERSON MINVALUE 7 START WITH 7 INCREMENT BY 1 CACHE 10;
+
+create table LibraryManagement
+(
+	id number,
+	name varchar2(30),
+	age number check (age>=15),
+	address varchar2(30) check (address = 'Dhaka'),
+	email varchar2(30) unique,
+	hobby varchar2(30) default 'Book reading'
+);
+
+insert into LibraryManagement values (SEQ_PERSON.NEXTVAL, 'Ishfar', 18, 'Dhaka', 'a@gmail.com', null);

@@ -1,0 +1,131 @@
+CREATE TABLE Manufacturers(
+Code INTEGER,
+Name VARCHAR(255) NOT NULL,
+PRIMARY KEY (Code)
+);
+
+INSERT INTO Manufacturers(Code,Name) VALUES(1,'Sony');
+INSERT INTO Manufacturers(Code,Name) VALUES(2,'Creative Labs');
+INSERT INTO Manufacturers(Code,Name) VALUES(3,'Hewlett-Packard');
+INSERT INTO Manufacturers(Code,Name) VALUES(4,'Iomega');
+INSERT INTO Manufacturers(Code,Name) VALUES(5,'Fujitsu');
+INSERT INTO Manufacturers(Code,Name) VALUES(6,'Winchester');
+
+CLEAR SCREEN;
+
+CREATE TABLE Products (
+Code INTEGER,
+Name VARCHAR(255) NOT NULL ,
+Price DECIMAL NOT NULL ,
+Manufacturer INTEGER NOT NULL,
+PRIMARY KEY (Code),
+FOREIGN KEY (Manufacturer) REFERENCES Manufacturers(Code)
+);
+
+INSERT INTO Products(Code,Name,Price,Manufacturer) VALUES(1,'Hard drive',240,5);
+INSERT INTO Products(Code,Name,Price,Manufacturer) VALUES(2,'Memory',120,6);
+INSERT INTO Products(Code,Name,Price,Manufacturer) VALUES(3,'ZIP drive',150,4);
+INSERT INTO Products(Code,Name,Price,Manufacturer) VALUES(4,'Floppy disk',5,6);
+INSERT INTO Products(Code,Name,Price,Manufacturer) VALUES(5,'Monitor',240,1);
+INSERT INTO Products(Code,Name,Price,Manufacturer) VALUES(6,'DVD drive',180,2);
+INSERT INTO Products(Code,Name,Price,Manufacturer) VALUES(7,'CD drive',90,2);
+INSERT INTO Products(Code,Name,Price,Manufacturer) VALUES(8,'Printer',270,3);
+INSERT INTO Products(Code,Name,Price,Manufacturer) VALUES(9,'Toner cartridge',66,3);
+INSERT INTO Products(Code,Name,Price,Manufacturer) VALUES(10,'DVD burner',180,2);
+INSERT INTO Products(Code,Name,Price,Manufacturer) VALUES(11'Card Reader',180,2);
+
+
+SELECT Name
+FROM Products;
+
+SELECT NAME,PRICE
+FROM PRODUCTS;
+
+SELECT Name
+FROM Products
+WHERE PRICE <= 200;
+
+SELECT NAME
+FROM PRODUCTS
+WHERE PRICE BETWEEN 60 AND 120;
+
+SELECT NAME, PRICE*100 AS PRICE_IN_CENTS
+FROM Products;
+
+SELECT AVG(PRICE)
+FROM Products;
+
+SELECT SUM(PRICE)/COUNT(CODE)
+FROM PRODUCTS;
+
+SELECT AVG(PRICE) AS AVERAGE_PRICE
+FROM Products
+WHERE CODE = 2;
+
+SELECT COUNT(CODE) AS PRODUCTS
+FROM Products
+WHERE PRICE >= 180;
+
+SELECT NAME, PRICE
+FROM Products
+WHERE PRICE >= 180;
+
+SELECT NAME, PRICE
+FROM Products
+WHERE PRICE >= 180
+ORDER BY PRICE DESC;
+
+SELECT NAME, PRICE
+FROM Products
+WHERE PRICE >= 180
+ORDER BY PRICE DESC, NAME;
+
+SELECT NAME, PRICE
+FROM Products
+WHERE PRICE = (SELECT MIN(PRICE) FROM PRODUCTS);
+
+SELECT PRODUCTS.NAME AS P_NAME, PRICE, Manufacturers.Name AS M_NAME
+FROM PRODUCTS, ManufacturerS
+WHERE PRODUCTS.Manufacturer = ManufacturerS.CODE;
+
+SELECT Manufacturer, AVG(PRICE)
+FROM PRODUCTS
+GROUP BY Manufacturer;
+
+SELECT Manufacturers.Name, AVG(PRODUCTS.PRICE) AS AVG_PRICE
+FROM PRODUCTS, Manufacturers
+WHERE PRODUCTS.Manufacturer = Manufacturers.CODE
+GROUP BY Manufacturers.Name;
+
+SELECT Manufacturers.NAME, AVG(PRODUCTS.PRICE) AS AVERAGE_PRICE
+FROM Manufacturers, Products
+WHERE PRODUCTS.Manufacturer = ManufacturerS.Code
+GROUP BY Manufacturers.Name
+HAVING AVG(PRICE) >= 150;
+
+SELECT Manufacturers.NAME, MAX(PRODUCTS.PRICE) AS M_PRICE
+FROM PRODUCTS, Manufacturers
+WHERE  PRODUCTS.Manufacturer = ManufacturerS.Code
+GROUP BY Manufacturers.Name;
+
+SELECT Manufacturers.NAME, MAX(PRODUCTS.PRICE) AS M_PRICE
+FROM PRODUCTS, Manufacturers
+WHERE  PRODUCTS.Manufacturer = ManufacturerS.Code
+GROUP BY Manufacturers.Name
+ORDER BY MAX(PRODUCTS.PRICE) DESC;
+
+UPDATE PRODUCTS
+SET NAME = 'Laser Printer'
+where code = 8;
+
+SELECT PRICE*0.9 AS DISCOUNT_PRICE
+FROM Products;
+
+UPDATE Products
+SET PRICE = PRICE*0.9;
+
+SELECT M.NAME, MAX(P.PRICE) AS MAX_PRICE
+FROM PRODUCTS P, Manufacturers M
+WHERE M.CODE = P.Manufacturer
+GROUP BY M.NAME
+ORDER BY MAX_PRICE;

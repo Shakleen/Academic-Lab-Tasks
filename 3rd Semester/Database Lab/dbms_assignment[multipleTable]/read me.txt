@@ -1,0 +1,11 @@
+_submit the solutions in a zip file named as 'ID_4308assignment1_2018'
+
+_in the zip file there will be 4 separate folders for the 4 exercises.
+
+_the ER-diagrams are given in each forders. The DDLs are also given. If any DDL doesn't work for your system, modify it and give the modified file in the corresponding folder. 
+
+_for each exercise create a doc/txt/pdf file containing the question+solution+result that u got from the SQL CMD. 
+
+_all the assignments should be submitted to the googleClassroom.
+
+_DEADLINE 09/05/2018 11.59PM.

@@ -1,0 +1,231 @@
+SQL> CREATE TABLE Pieces
+  2  (
+  3  Code INTEGER PRIMARY KEY NOT NULL,
+  4  Name VARCHAR2(20) NOT NULL
+  5  );
+
+Table created.
+
+SQL> CREATE TABLE Providers
+  2  (
+  3   Code VARCHAR(40)  PRIMARY KEY NOT NULL,
+  4  Name VARCHAR2(20) NOT NULL
+  5  );
+
+Table created.
+
+SQL> CREATE TABLE Provides
+  2  (
+  3  Piece INTEGER,
+  4  FOREIGN KEY (Piece) REFERENCES Pieces(Code),
+  5  Provider VARCHAR(40),
+  6   FOREIGN KEY (Provider) REFERENCES Providers(Code),
+  7  Price INTEGER NOT NULL,
+  8  PRIMARY KEY(Piece, Provider)
+  9  );
+
+Table created.
+
+SQL> INSERT INTO Providers(Code, Name) VALUES('HAL','Clarke Enterprises');
+
+1 row created.
+
+SQL> INSERT INTO Providers(Code, Name) VALUES('RBT','Susan Calvin Corp.');
+
+1 row created.
+
+SQL> INSERT INTO Providers(Code, Name) VALUES('TNBC','Skellington Supplies');
+
+1 row created.
+
+SQL>
+SQL> INSERT INTO Pieces(Code, Name) VALUES(1,'Sprocket');
+
+1 row created.
+
+SQL> INSERT INTO Pieces(Code, Name) VALUES(2,'Screw');
+
+1 row created.
+
+SQL> INSERT INTO Pieces(Code, Name) VALUES(3,'Nut');
+
+1 row created.
+
+SQL> INSERT INTO Pieces(Code, Name) VALUES(4,'Bolt');
+
+1 row created.
+
+SQL>
+SQL> INSERT INTO Provides(Piece, Provider, Price) VALUES(1,'HAL',10);
+
+1 row created.
+
+SQL> INSERT INTO Provides(Piece, Provider, Price) VALUES(1,'RBT',15);
+
+1 row created.
+
+SQL> INSERT INTO Provides(Piece, Provider, Price) VALUES(2,'HAL',20);
+
+1 row created.
+
+SQL> INSERT INTO Provides(Piece, Provider, Price) VALUES(2,'RBT',15);
+
+1 row created.
+
+SQL> INSERT INTO Provides(Piece, Provider, Price) VALUES(2,'TNBC',14);
+
+1 row created.
+
+SQL> INSERT INTO Provides(Piece, Provider, Price) VALUES(3,'RBT',50);
+
+1 row created.
+
+SQL> INSERT INTO Provides(Piece, Provider, Price) VALUES(3,'TNBC',45);
+
+1 row created.
+
+SQL> INSERT INTO Provides(Piece, Provider, Price) VALUES(4,'HAL',5);
+
+1 row created.
+
+SQL> INSERT INTO Provides(Piece, Provider, Price) VALUES(4,'RBT',7);
+
+1 row created.
+
+SQL> SELECT Name from Pieces;
+
+NAME
+--------------------
+Sprocket
+Screw
+Nut
+Bolt
+
+SQL> SELECT * FROM Providers;
+
+CODE                                     NAME
+---------------------------------------- --------------------
+HAL                                      Clarke Enterprises
+RBT                                      Susan Calvin Corp.
+TNBC                                     Skellington Supplies
+
+SQL> SELECT AVG(Price) AveragePrice, Piece Code
+  2  FROM Provides
+  3  GROUP BY Piece;
+
+AVERAGEPRICE       CODE
+------------ ----------
+        12.5          1
+  16.3333333          2
+           6          4
+        47.5          3
+
+SQL> SELECT Provider
+  2  FROM Provides
+  3  WHERE Piece = 1;
+
+PROVIDER
+----------------------------------------
+HAL
+RBT
+
+SQL> SELECT Pieces.Name
+  2  FROM Pieces, Provides
+  3  WHERE Pieces.Code = Provides.Piece AND Provider = 'HAL';
+
+NAME
+--------------------
+Sprocket
+Screw
+Bolt
+
+SQL> SELECT Pieces.Name, Provides.Provider, Nested.MAX_PRICE
+  2  FROM
+  3  (
+  4  SELECT Provides.Piece, MAX(Provides.Price) MAX_PRICE
+  5  FROM Provides
+  6  GROUP BY Provides.Piece
+  7  ) Nested, Pieces, Provides
+  8  WHERE Nested.Piece = Provides.Piece AND Nested.Piece = Pieces.Code;
+
+NAME                 PROVIDER                                  MAX_PRICE
+-------------------- ---------------------------------------- ----------
+Sprocket             HAL                                              15
+Sprocket             RBT                                              15
+Screw                HAL                                              20
+Screw                RBT                                              20
+Screw                TNBC                                             20
+Nut                  RBT                                              50
+Nut                  TNBC                                             50
+Bolt                 HAL                                               7
+Bolt                 RBT                                               7
+
+9 rows selected.
+
+SQL> INSERT INTO Provides(Piece, Provider, Price)
+  2  VALUES (1, 'TNBC', 7);
+
+1 row created.
+
+SQL> UPDATE Provides
+  2  SET Price = Price + 1;
+
+10 rows updated.
+
+SQL> SELECT * FROM Provides;
+
+     PIECE PROVIDER                                      PRICE
+---------- ---------------------------------------- ----------
+         1 HAL                                              11
+         1 RBT                                              16
+         2 HAL                                              21
+         2 RBT                                              16
+         2 TNBC                                             15
+         3 RBT                                              51
+         3 TNBC                                             46
+         4 HAL                                               6
+         4 RBT                                               8
+         1 TNBC                                              8
+
+10 rows selected.
+
+SQL> DELETE FROM Provides
+  2  WHERE Provider = 'RBT' AND Piece = 4;
+
+1 row deleted.
+
+SQL> SELECT * FROM Provides;
+
+     PIECE PROVIDER                                      PRICE
+---------- ---------------------------------------- ----------
+         1 HAL                                              11
+         1 RBT                                              16
+         2 HAL                                              21
+         2 RBT                                              16
+         2 TNBC                                             15
+         3 RBT                                              51
+         3 TNBC                                             46
+         4 HAL                                               6
+         1 TNBC                                              8
+
+9 rows selected.
+
+SQL> DELETE FROM Provides
+  2  WHERE Provider = 'RBT';
+
+3 rows deleted.
+
+SQL> SELECT * FROM Provides;
+
+     PIECE PROVIDER                                      PRICE
+---------- ---------------------------------------- ----------
+         1 HAL                                              11
+         2 HAL                                              21
+         2 TNBC                                             15
+         3 TNBC                                             46
+         4 HAL                                               6
+         1 TNBC                                              8
+
+6 rows selected.
+
+SQL>

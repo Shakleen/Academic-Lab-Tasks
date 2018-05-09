@@ -1,0 +1,45 @@
+Sadio Mane
+Liverpool
+13 5
+Diego Costa
+Chelsea 
+19 6
+Harry Kane
+Tottenham Hotspur
+20 5
+Jamie Vardy
+Leicester City
+11 4
+Juan Mata
+Manchester United
+6 3
+N'Golo Kante
+Chelsea 
+1 1
+Zlatan Ibrahimovic
+Manchester United
+17 5
+Christian Eriksen
+Tottenham Hotspur
+7 12
+Kevin De Bruyne
+Manchester City
+4 13
+Ross Barkley
+Everton
+4 8
+Eden Hazard
+Chelsea
+15 5
+Romelu Lukaku
+Everton
+24 6
+Riyad Mahrez
+Leicester City
+5 3
+Sergio Aguero
+Manchester City
+17 0
+Dele Alli
+Tottenham Hotpurs
+16 5

@@ -1,0 +1,69 @@
+Task 1:	Consider the following schema:
+		
+		students(
+			id[number], 
+			name[varchar], 
+			address[varchar]\,
+			did[varchar,fk_dept]
+			);
+		department(id[number], name[varchar], estd[number]);
+		course(id[varchar], name[varchar], credit[number]);
+		studentTakesCourse(
+				sid[number,fk(students)],
+				cid[varchar, fk(courses)],
+				semester[varchar(summer/winter)], 
+				year[number], 
+				subjectgrade[number(3,2)]
+				)
+
+		Student:
+
+		id		name	address		dept
+		1		habba	pabna		1
+		2		panda	dhaka		1
+		3		cadet	sirajganj	1
+		4		rubel	dhanmondi	1
+
+		department
+
+		id	name	estd
+		1	cse 	1998
+		2	mce		1998
+		3	swe		2017
+
+		course
+
+		id			name					credit
+		cse101		C 						3
+		cse102		Intro to computer		3
+		cse201		database				3
+
+		studentTakesCourse
+
+		sid		cid 		semester 		year 		subjectgrade
+		1		cse101		winter			2014		4.00
+		1		cse102		winter			2014		3.75
+		2		cse101		winter			2014		3.50
+		2		cse102		summer			2014		3.75
+
+
+		Now create a VIEW which will
+			i.	Show the Information of the students along with the department name.
+			ii.	Show the information of student id=1 , the informations will include his name, department name, courses attended, grade achieved,semester,credits for that course. 
+				Then from this view, do the followings:
+					a.	Show the Name and courses attended only  [have to access from the view.]
+					b.	Calculate his CGPA and save the value to another VIEW. [formula: total grade/totalCredit (don't care the semester.)]
+					c.	Create another view from this existing VIEW which will include the students name and courses attended. [sorted according to the course name.]
+
+Task 2:	Create the CITIZEN table from the Handout section 4.1\
+		i.	Show the lowest 5 salaries from the table
+		ii.	Show the maximum and minimum salary of the table using a single query.
+		iii.What is the 3rd highest salary of the overall table?
+		iv.	Show the 2nd highest and lowest salary of the table using a single query.
+
+Task 3:	Create necessary DDL satistying the following scenario.	Justify your solution by inserting some values and show whether it
+		satisfy Marks wish or not!
+		
+		Mark wants to create a digital solution for his library management. He wants to provide the users an Unique ID which will be automatically incremented as the number of users increases. Mark wants the initial ID to start from 7 (he thinks it's lucky for him!).	He will store the name of the users along with their age. Age must be at least 15. Currnetly he wants the software only to be available for the citizens of 'Dhaka' (for the address column). For giving promotions, Mark wants to store the Email addresses of the users, but obviously he won't allow more that one user with the same Email address.	He wants to store the hobby of the users of the system also. But as this field can be null, if some user doesn't put the hobby, Mark wants it to be 'Book reading' by default.
+
+

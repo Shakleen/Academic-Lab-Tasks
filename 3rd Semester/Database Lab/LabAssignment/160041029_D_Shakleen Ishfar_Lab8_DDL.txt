@@ -1,0 +1,121 @@
+CREATE TABLE Department
+(
+    DepartmentID Number,
+    Established Date,
+    DepartmentName varchar2(5),
+    Building Varchar2(20),
+    CONSTRAINTS PK_Department_DepartmentID PRIMARY KEY (DepartmentID)
+);
+
+CREATE TABLE Scale
+(
+    ScaleID Number,
+    ScaleName varchar2(30),
+    Basic Number,
+    Home Number,
+    Child Number,
+    Increment Number,
+    CONSTRAINTS PK_Scale_ScaleID PRIMARY KEY (ScaleID)
+);
+
+CREATE TABLE Teacher
+(
+    TeacherID Number,
+    TeacherName varchar2(30),
+    ScaleID Number,
+    DepartmentID Number,
+    HeadStatus Number,
+    Age Number,
+    StartingDate Date,
+    EndingDate Date,
+    CONSTRAINTS PK_Teacher_TeacherID PRIMARY KEY (TeacherID),
+    CONSTRAINTS FK_Teacher_DepartmentID FOREIGN KEY (DepartmentID) REFERENCES Department(DepartmentID),
+    CONSTRAINTS FK_Teacher_ScaleID FOREIGN KEY (ScaleID) REFERENCES Scale(ScaleID)
+);
+
+CREATE TABLE History
+(
+    TeacherID Number,
+    DepartmentID Number,
+    StartingDate Date,
+    EndingDate Date,
+    HeadStatus Number,
+    CONSTRAINTS FK_History_TeacherID  FOREIGN KEY (TeacherID) REFERENCES Teacher (TeacherID),
+    CONSTRAINTS FK_History_DepartmentID  FOREIGN KEY (DepartmentID) REFERENCES Department(DepartmentID)
+);
+
+ALTER TABLE Teacher CONSTRAINTS FK_Teacher_HeadStatus FOREIGN KEY (HeadStatus) REFERENCES History(HeadStatus);
+
+CREATE TABLE Course
+(
+    CourseID Number,
+    CourseName varchar2(30),
+    Credit Number,
+    Pre-Requisite Number,
+    DepartmentID Number,
+    CONSTRAINTS PK_Course_CourseID PRIMARY KEY (CourseID),
+    CONSTRAINTS FK_Course_DepartmentID FOREIGN KEY (DepartmentID) REFERENCES Department (DepartmentID),
+    CONSTRAINTS FK_Course_PreRequisiteCourseID FOREIGN KEY (Pre-Requisite) REFERENCES Course (CourseID)
+);
+
+CREATE TABLE CourseTeacher
+(
+    TeacherID Number,
+    CourseID Number,
+    Year Number,
+    Rating Number,
+    CONSTRAINTS FK_CourseTeacher_TeacherID FOREIGN KEY (TeacherID) REFERENCES Teacher (TeacherID),
+    CONSTRAINTS FK_CourseTeacher_CourseID FOREIGN KEY (CourseID) REFERENCES Teacher (CourseID)
+);
+
+CREATE TABLE Hall
+(
+    HallID Number,
+    RoomNo Number,
+    BedNo Number,
+    TotalEmployee Number,
+    CONSTRAINTS PK_Hall_HallInfo PRIMARY KEY (HallID, RoomNo, BedNo)
+);
+
+CREATE TABLE Student
+(
+    StudentID Number,
+    StudentName varchar2(30),
+    StudentAge Number,
+    HallID Number,
+    RoomNo Number,
+    BedNo Number,
+    CONSTRAINTS PK_Student_StudentID PRIMARY KEY (StudentID),
+    CONSTRAINTS FK_Student_HallInfo FOREIGN KEY (HallID, RoomNo, BedNo) REFERENCES Hall (HallID, RoomNo, BedNo)
+);
+
+CREATE TABLE Book
+(
+    BookID Number,
+    Name varchar2(30),
+    Author varchar2(30),
+    CONSTRAINTS PK_Book_BookID PRIMARY KEY (BookID)
+);
+
+CREATE TABLE LibraryBook
+(
+    StudentID Number,
+    BookID Number,
+    IssueDate Date,
+    ReturnDate Date,
+    CONSTRAINTS FK_LibraryBook_StudentID FOREIGN KEY (StudentID) REFERENCES Student (StudentID),
+    CONSTRAINTS FK_LibraryBook_BookID FOREIGN KEY (BookID) REFERENCES Book (BookID)
+);
+
+CREATE TABLE HallStaff
+(
+    StaffID Number,
+    StaffName varchar2(30),
+    ScaleID Number,
+    StaffAge Number,
+    StaffHallNo Number,
+    ProvostStatus Number,
+    CONSTRAINTS PK_HallStaff_StaffID PRIMARY KEY (StaffID),
+    CONSTRAINTS FK_HallStaff_ScaleID FOREIGN KEY (ScaleID) REFERENCES Scale (ScaleID),
+    CONSTRAINTS FK_HallStaff_HallNo FOREIGN KEY (HallNo) REFERENCES Hall (HallID)
+);

@@ -1,0 +1,43 @@
+CREATE TABLE DEPARTMENT(
+DepartmentName VARCHAR2(4),
+Establishment DATE,
+Budget NUMBER,
+Location VARCHAR2(20),
+DepartmentID NUMBER,
+CONSTRAINT PK_DEPARTMENT PRIMARY KEY (DepartmentName)
+);
+
+CREATE TABLE STUDENT(
+SID NUMBER,
+StudentName VARCHAR2(20),
+DepartmentName VARCHAR2(4),
+BirthDate DATE,
+CGPA NUMBER,
+CONSTRAINT PK_STUDENT PRIMARY KEY (SID, StudentName),
+CONSTRAINT FK_StdDeptName FOREIGN KEY (DepartmentName) REFERENCES DEPARTMENT(DepartmentName)
+);
+
+CREATE TABLE EMPLOYEE(
+EmployeeName VARCHAR2(20),
+EmployeeID NUMBER,
+DepartmentName VARCHAR2(4),
+Salary NUMBER,
+Joining DATE,
+CONSTRAINT PK_Employee PRIMARY KEY (EmployeeID, EmployeeName),
+CONSTRAINT FK_EmpDeptName FOREIGN KEY (DepartmentName) REFERENCES DEPARTMENT(DepartmentName)
+);
+
+INSERT INTO STUDENT 
+(SID, StudentName, DepartmentName, CGPA)
+VALUES
+(101, 'Ishfar', 'CSE', 3.92);
+
+INSERT INTO DEPARTMENT
+(DepartmentName, Budget, Location, DepartmentID)
+VALUES
+('CSE', 20000000, 'IUT', 4);
+
+INSERT INTO EMPLOYEE
+(EmployeeName, EmployeeID, DepartmentName, Salary)
+VALUES
+('Ahnaf', 101, 'CSE', 100000);
