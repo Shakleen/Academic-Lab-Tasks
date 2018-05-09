@@ -1,9 +1,0 @@
-// 2.1
-SELECT Scientists.Name, Projects.Name, Projects.Hours
-FROM Scientists, Projects, AssignedTo
-WHERE Scientists.SSN = AssignedTo.Scientist AND AssignedTo.Project = Projects.Code;
-
-// 2.2
-SELECT Projects.Name
-FROM Projects
-WHERE Projects.Code NOT IN (SELECT Project FROM AssignedTo);
