@@ -5,9 +5,9 @@
 
 Name::Name(const Name & obj)
 {
-	int len = strlen(obj.name)+1;
+	int len = strlen(obj.name);
 
-	name = new char[len];
+	name = new char[len+1];
 
 	for (int i = 0; i < len; i++)
 	{
@@ -33,18 +33,18 @@ Name::Name(const char * str)
 
 Name Name::operator=(Name obj)
 {
-	int len = strlen(obj.name)+1;
+	int len = strlen(obj.name);
 
-	this->name = new char[len];
+	this->name = new char[len+1];
 
-	for (int i = 0; i < len; i++)
+	for (int i = 0; i <= len; i++)
 	{
 		name[i] = obj.name[i];
 	}
 
-	obj.name[len - 1] = '\0';
+	//obj.name[len] = '\0';
 
-	std::cout << "HERE!\n";
+//	std::cout << "HERE!\n";
 
 	return *this;
 }

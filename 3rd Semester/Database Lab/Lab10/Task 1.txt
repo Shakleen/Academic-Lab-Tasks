@@ -117,10 +117,14 @@ INSERT INTO CITIZEN VALUES (18, 'R', 'Khulna', 34, 'Service', 'Female', 45000);
 INSERT INTO CITIZEN VALUES (19, 'S', 'Ctg', 16, 'Student', 'Male', 500);
 
 // i)
-select salary 
-From Citizen
-where rownum<=5
-Order by Salary;
+select *
+from
+(
+	select salary 
+	From Citizen
+	Order by Salary
+)
+where ROWNUM <=5;
 
 // ii)
 (select min(salary) from citizen)

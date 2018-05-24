@@ -1,0 +1,220 @@
+ID 160041029
+Name Shakleen Ishfar
+Set Thor
+Group D
+
+// Task 1
+
+CREATE TABLE Branch
+(
+	BranchID Number,
+	BranchName VARCHAR2(30),
+	YearOfEst Date,
+	CONSTRAINT PK_B_BID PRIMARY KEY (BranchID)
+);
+
+CREATE SEQUENCE Account_ID_Gen
+MINVALUE 101
+START WITH 101
+INCREMENT BY 1
+Cache 10;
+
+CREATE TABLE Account
+(
+	AccountID Number,
+	BranchID Number,
+	Username VARCHAR2(30),
+	Name VARCHAR2(30),
+	DOB Date,
+	HomeTown VARCHAR2(30),
+	Occupation VARCHAR2(30),
+	Gender VARCHAR2(30),
+	CONSTRAINT UQ_Username Unique(Username),
+	CONSTRAINT PK_A_AID PRIMARY KEY (AccountID),
+	CONSTRAINT FK_A_BID FOREIGN KEY (BranchID) REFERENCES Branch (BranchID)
+);
+
+CREATE TABLE Staff
+(
+	StaffID Number,
+	JobCategory Number CHECK (JobCategory>=1 AND JobCategory<=3),
+	NationalID Number,
+	BloodGroup VARCHAR2(10),
+	DOB Date,
+	CONSTRAINT UQ_S_NID Unique(NationalID),
+	CONSTRAINT PK_S_SID PRIMARY KEY (StaffID)
+);
+
+CREATE TABLE ShiftInfo
+(
+	ShiftID Number PRIMARY KEY,
+	BranchID Number,
+	DayOfWeek VARCHAR2(30),
+	StartTime Number,
+	Duration Number,
+	CONSTRAINT FK_W_BID FOREIGN KEY (BranchID) REFERENCES BRANCH(BranchID)
+);
+
+CREATE TABLE StaffShift
+(
+	StaffID Number,
+	ShiftID Number,
+	CONSTRAINT FK_SS_StaffID FOREIGN KEY (StaffID) REFERENCES Staff(StaffID),
+	CONSTRAINT FK_SS_ShiftID FOREIGN KEY (ShiftID) REFERENCES ShiftInfo(ShiftID)
+);
+
+CREATE TABLE BranchShift
+(
+	BranchID Number,
+	ShiftID Number,
+	CONSTRAINT FK_BS_BID FOREIGN KEY (BranchID) REFERENCES Branch (BranchID),
+	CONSTRAINT FK_BS_ShiftID FOREIGN KEY (ShiftID) REFERENCES ShiftInfo(ShiftID)
+);
+
+CREATE TABLE IssueInfo
+(
+	UserID Number NOT NULL,
+	BranchID Number NOT NULL,
+	BookName VARCHAR2(30) NOT NULL,
+	IssuerID Number NOT NULL,
+	IssueDate Date NOT NULL,
+	KeepDays Number DEFAULT 15,
+	CONSTRAINT FK_II_UID FOREIGN KEY (UserID) REFERENCES Account(AccountID),
+	CONSTRAINT FK_II_BID FOREIGN KEY (BranchID) REFERENCES Branch (BranchID),
+	CONSTRAINT FK_II_SID FOREIGN KEY (IssuerID) REFERENCES Staff(StaffID)
+);
+
+
+// Task 2
+// a
+
+CREATE VIEW citizenOfDhaka AS
+SELECT *
+FROM citizen
+WHERE C_HOME LIKE 'Dhaka';
+
+// b
+SELECT COUNT(DISTINCT(C_HOME))
+FROM citizenOfDhaka;
+
+// c
+(SELECT * FROM citizen WHERE Gender = 'Male' AND Occupation = 'Teacher')
+UNION
+(SELECT * FROM citizen WHERE Gender = 'Female' AND Occupation = 'Musician');
+
+// d
+SELECT Salary
+FROM 
+(SELECT Distinct(Salary) FROM citizen ORDER BY Salary)
+WHERE ROWNUM <= 4;
+
+// e
+SELECT C_HOME
+FROM citizen
+WHERE C_HOME LIKE '____%';
+
+// f
+SELECT C_HOME
+FROM citizen
+WHERE C_HOME LIKE '_____';
+
+// g
+SELECT Salary
+FROM 
+(SELECT ROWNUM RN, Salary
+FROM 
+(SELECT Distinct(Salary) FROM citizen ORDER BY Salary)
+WHERE ROWNUM <= 4)
+WHERE RN = 4;
+
+// h
+SELECT Occupation
+FROM
+(SELECT ROWNUM RN, Occupation, AVG
+FROM 
+(SELECT Occupation, AVG(Salary) AVG
+FROM citizen
+GROUP BY Occupation
+ORDER BY AVG(Salary) DESC))
+WHERE RN = 2;
+
+
+// TASK 3
+CREATE TABLE Employee(
+	ID Number PRIMARY KEY,
+	Name VARCHAR2(30),
+	Salary Number
+);
+
+CREATE OR REPLACE Procedure GETSALARY (Person_id IN Number) AS
+	Person_Name VARCHAR2(30);
+	Person_Salary Number;
+
+BEGIN	
+	SELECT Name, Salary INTO Person_Name, Person_Salary
+	FROM Employee
+	WHERE ID = Person_id;
+
+	IF (Person_Salary < 25000) 
+		THEN DBMS_OUTPUT.PUT_LINE('Hello ' || Person_Name || ' ' || Person_Salary || ' is not good');
+	ELSIF (Person_Salary < 40000 AND Person_Salary < 25000)
+		THEN DBMS_OUTPUT.PUT_LINE('Hello ' || Person_Name || ' ' || Person_Salary || ' is average');
+	ELSE
+		DBMS_OUTPUT.PUT_LINE('Well Done ' || Person_Name);
+	END IF;
+END GETSALARY;
+/
+
+// Task 4
+
+CREATE TABLE Patient
+(
+	Name VARCHAR2(30),
+	Addr VARCHAR2(30),
+	Age Number
+);
+
+CREATE TABLE Doctor
+(
+	Name VARCHAR2(30),
+	Addr VARCHAR2(30),
+	Age Number
+);
+
+CREATE TABLE Diagnose
+(
+	Name VARCHAR2(30),
+	Addr VARCHAR2(30),
+	Age Number
+);
+
+
+create role ROLE_AP;
+GRANT Insert, Select, Update, Delete ON Ishrak.Patient TO Role_AP;;
+GRANT Insert, Select, Update, Delete ON Ishrak.Doctor TO Role_AP;
+GRANT Insert, Select, Update, Delete ON Ishrak.Diagnose TO Role_AP;
+
+CREATE ROLE ROLE_DC;
+GRANT Insert, Select, Update ON Ishrak.Patient TO ROLE_DC;
+GRANT Insert, Select ON Ishrak.Doctor TO ROLE_DC;
+GRANT Select ON Ishrak.Diagnose TO ROLE_DC;
+
+CREATE ROLE ROLE_O;
+GRANT Select ON Ishrak.Patient TO ROLE_DC;
+GRANT Select ON Ishrak.Doctor TO ROLE_DC;
+
+CREATE USER d1 IDENTIFIED BY AAA;
+CREATE USER d2 IDENTIFIED BY AAA;
+GRANT ROLE_DC TO d1, d2;
+
+CREATE USER a1 IDENTIFIED BY AAA;
+CREATE USER a2 IDENTIFIED BY AAA;
+GRANT ROLE_DC TO a1, a2;
+
+CREATE USER p1 IDENTIFIED BY AAA;
+CREATE USER p2 IDENTIFIED BY AAA;
+CREATE USER p3 IDENTIFIED BY AAA;
+CREATE USER p4 IDENTIFIED BY AAA;
+CREATE USER p5 IDENTIFIED BY AAA;
+GRANT ROLE_DC TO p1, p2, p3, p4, p5;
+

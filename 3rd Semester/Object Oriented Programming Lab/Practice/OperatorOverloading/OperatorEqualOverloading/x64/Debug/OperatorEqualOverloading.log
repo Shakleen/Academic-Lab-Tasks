@@ -1,0 +1,5 @@
+﻿  Name.cpp
+g:\cse\labs\3rd semester\object oriented programming lab\practice\operatoroverloading\operatorequaloverloading\name.cpp(8): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+g:\cse\labs\3rd semester\object oriented programming lab\practice\operatoroverloading\operatorequaloverloading\name.cpp(22): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+g:\cse\labs\3rd semester\object oriented programming lab\practice\operatoroverloading\operatorequaloverloading\name.cpp(36): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  OperatorEqualOverloading.vcxproj -> G:\CSE\Labs\3rd Semester\Object Oriented Programming Lab\Practice\OperatorOverloading\OperatorEqualOverloading\x64\Debug\OperatorEqualOverloading.exe
