@@ -1,0 +1,22 @@
+Task 1
+
+Suppose, as a programmer of a reknowned software development farm, you are assigned
+a task of creating employee records.
+The company keeps records of an employees Name, ID, Date of Birth, Email, Address, Contact
+Number, Salary. The company also has a policy of how long an employee can serve the company and
+the record for each employee contains that information.
+
+Sometimes the company requires information about certain portion of the employees' record, but they have
+emphasized on the fact that the funtion to extract those informations will be universal i.e. what ever information
+the company requires, the same function should be invoked every time.
+
+The ID of the employee is assigned automatically and sequentially whenever a new employee is appointed.
+
+Your task is to create the above mentioned system with the following highlights:
+
+1. You should implement the concept of package.
+2. The company doesn't have very high end servers, so memory and performance is a constraint when you 
+    have to keep information of over 100,000 employees. Optimise your system for this issue.
+3. the ID assigned to the employee should be sequential. and the person with the latest ID should reflect upon
+    the total number of employees currently employed.
+4. Finally you have to show an output containing certain portions of employees' record via the same method.

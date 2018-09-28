@@ -1,0 +1,69 @@
+library ieee;
+
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+entity tb_MUX4x1 is
+end tb_MUX4x1;
+
+
+architecture behaviour of tb_MUX4x1 is
+
+component MUX4x1 
+	port
+	(
+		-- 4 inputs.
+		I0	:	in	std_logic;	
+		I1	:	in	std_logic;	
+		I2	:	in	std_logic;	
+		I3	:	in	std_logic;	
+
+		-- To select any of the 4 inputs we need a selector of 2 bits.
+		sel	:	in	std_logic_vector (1 downto 0);
+
+		-- The output of the MUX	
+		output	:	out	std_logic			
+		
+	);
+end component;
+
+signal	tb_I0		: std_logic			:= '0';
+signal	tb_I1		: std_logic			:= '0';
+signal	tb_I2		: std_logic			:= '0';
+signal	tb_I3		: std_logic			:= '0';
+
+signal	tb_sel		: std_logic_vector(1 downto 0)	:= (others => '0');
+signal	tb_output	: std_logic			:= '0';
+
+begin
+	uut: MUX4x1 port map
+	(
+		I0 	=> 	tb_I0,
+		I1 	=> 	tb_I1,
+		I2 	=> 	tb_I2,
+		I3 	=> 	tb_I3,
+
+		sel	=>	tb_sel,
+		output	=>	tb_output
+	);
+
+	stim_process: process
+	begin
+		wait for 50 ns;
+		tb_sel <= "00";
+
+		tb_I0 <= '1';		tb_I1 <= '0';		tb_I2 <= '1';		tb_I3 <= '1';
+
+		wait for 50 ns;
+		tb_sel <= "01";
+
+		wait for 50 ns;
+		tb_sel <= "10";
+
+		wait for 50 ns;
+		tb_I0 <= '0';		tb_I1 <= '1';		tb_I2 <= '0';		tb_I3 <= '0';
+		tb_sel <= "11";
+
+		wait for 50 ns;
+	end process;
+end behaviour;

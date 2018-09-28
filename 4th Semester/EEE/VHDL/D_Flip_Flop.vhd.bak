@@ -1,0 +1,27 @@
+library ieee;
+
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+entity D_Flip_Flop is
+	port
+	(
+		-- 2 inputs.
+		D	:	in	std_logic;	
+		clk	:	in	std_logic;
+
+		-- The output of the D_Flip_Flop	
+		Q	:	out	std_logic			
+		
+	);
+end D_Flip_Flop;
+
+
+architecture behaviour of D_Flip_Flop is
+begin
+	process(clk, D)
+	begin
+		if (clk'event and clk = '1') then
+			
+	end process;
+end behaviour;

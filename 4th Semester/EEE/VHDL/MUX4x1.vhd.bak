@@ -1,0 +1,35 @@
+library ieee;
+
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+entity MUX4x1 is
+	port
+	(
+		-- 4 inputs.
+		I0	:	in	std_logic;	
+		I1	:	in	std_logic;	
+		I2	:	in	std_logic;	
+		I3	:	in	std_logic;	
+
+		-- To select any of the 4 inputs we need a selector of 2 bits.
+		sel	:	in	std_logic_vector (1 downto 0);
+
+		-- The output of the MUX	
+		output	:	out	std_logic			
+		
+	);
+end MUX4x1;
+
+
+architecture behaviour of MUX4x1 is
+begin
+	process(sel)
+	begin
+		case sel is
+			when "00" 	=> output <= I0;
+			when "01" 	=> output <= I1;
+			when "10" 	=> output <= I2;
+			when others 	=> output <= I3;
+	end process;
+end behaviour;

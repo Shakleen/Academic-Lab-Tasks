@@ -1,0 +1,90 @@
+library ieee;
+
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+entity tb_Full_Adder is
+end tb_Full_Adder;
+
+
+architecture behaviour of tb_Full_Adder is
+
+component Full_Adder 
+	port
+	(
+		A	:	in	std_logic;
+		B	:	in	std_logic;
+		Cin	:	in	std_logic;
+		Sum	:	out	std_logic;
+		Cout	:	out	std_logic
+	);
+end component;
+
+signal	tb_A		: std_logic	:= '0';
+signal	tb_B		: std_logic	:= '0';
+signal	tb_Cin		: std_logic	:= '0';
+signal	tb_Sum		: std_logic	:= '0';
+signal	tb_Cout		: std_logic	:= '0';
+
+begin
+	uut: Full_Adder port map
+	(
+		A 	=> tb_A,
+		B 	=> tb_B,
+		Cin	=> tb_Cin,
+		Sum 	=> tb_Sum,
+		Cout	=> tb_Cout
+	);
+
+	process
+	begin
+		-- test 1
+		tb_A 	<= '0';
+		tb_B 	<= '0';
+		tb_Cin 	<= '0';
+		wait for 25 ns;
+		
+		-- test 2
+		tb_A 	<= '0';
+		tb_B 	<= '0';
+		tb_Cin 	<= '1';
+		wait for 25 ns;
+		
+		-- test 3
+		tb_A 	<= '0';
+		tb_B 	<= '1';
+		tb_Cin 	<= '0';
+		wait for 25 ns;
+		
+		-- test 4
+		tb_A 	<= '0';
+		tb_B 	<= '1';
+		tb_Cin 	<= '1';
+		wait for 25 ns;
+		
+		-- test 5
+		tb_A 	<= '1';
+		tb_B 	<= '0';
+		tb_Cin 	<= '0';
+		wait for 25 ns;
+		
+		-- test 6
+		tb_A 	<= '1';
+		tb_B 	<= '0';
+		tb_Cin 	<= '1';
+		wait for 25 ns;
+		
+		-- test 7
+		tb_A 	<= '1';
+		tb_B 	<= '1';
+		tb_Cin 	<= '0';
+		wait for 25 ns;
+		
+		-- test 8
+		tb_A 	<= '1';
+		tb_B 	<= '1';
+		tb_Cin 	<= '1';
+		wait for 25 ns;
+		
+	end process;
+end behaviour;

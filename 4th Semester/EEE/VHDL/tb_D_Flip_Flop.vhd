@@ -1,0 +1,64 @@
+library ieee;
+
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+entity tb_D_Flip_Flop is
+end tb_D_Flip_Flop;
+
+
+architecture behaviour of tb_D_Flip_Flop is
+
+component D_Flip_Flop 
+	port
+	(
+		-- 2 inputs.
+		D	:	in	std_logic;	
+		clk	:	in	std_logic;
+
+		-- The output of the D_Flip_Flop	
+		Q	:	out	std_logic
+	);
+end component;
+
+-- Constants
+signal CLK_PERIOD : time	:= 100 ns;
+
+-- For inputs
+signal	tb_D	: std_logic	:= '0';
+signal	tb_clk	: std_logic	:= '0';
+
+-- For outputs
+signal	tb_Q	: std_logic	:= '0';
+
+begin
+	uut: D_Flip_Flop port map
+	(
+		D 	=> 	tb_D,
+		clk 	=> 	tb_clk,
+		Q 	=> 	tb_Q
+	);
+
+
+	clk_process: process
+	begin
+		tb_clk <= '0';
+		wait for CLK_PERIOD / 2;
+
+		tb_clk <= '1';
+		wait for CLK_PERIOD / 2;
+	end process;
+
+
+	stim_process: process
+	begin
+		wait for 50 ns;
+		tb_D <= '0';
+
+		wait for 50 ns;
+		tb_D <= '1';
+
+		wait for 50 ns;
+		tb_D <= '0';
+	end process;
+end behaviour;

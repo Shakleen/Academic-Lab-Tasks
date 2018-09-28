@@ -1,0 +1,59 @@
+library ieee;
+
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+entity tb_Half_Adder is
+end tb_Half_Adder;
+
+
+architecture behaviour of tb_Half_Adder is
+
+component Half_Adder 
+	port
+	(
+		A	:	in	std_logic;
+		B	:	in	std_logic;
+		Sum	:	out	std_logic;
+		Carry	:	out	std_logic
+	);
+end component;
+
+signal	tb_A		: std_logic	:= '0';
+signal	tb_B		: std_logic	:= '0';
+signal	tb_Sum		: std_logic	:= '0';
+signal	tb_Carry	: std_logic	:= '0';
+
+begin
+	uut: Or_Gate port map
+	(
+		A 	=> tb_A,
+		B 	=> tb_B,
+		Sum 	=> tb_Sum,
+		Carry	=> tb_Carry	
+	);
+
+	process
+	begin
+		-- test 1
+		tb_A <= '0';
+		tb_B <= '0';
+		wait for 25 ns;
+		
+		-- test 2
+		tb_A <= '0';
+		tb_B <= '1';
+		wait for 25 ns;
+		
+		-- test 3
+		tb_A <= '1';
+		tb_B <= '0';
+		wait for 25 ns;
+		
+		-- test 4
+		tb_A <= '1';
+		tb_B <= '1';
+		wait for 25 ns;
+		
+	end process;
+end behaviour;

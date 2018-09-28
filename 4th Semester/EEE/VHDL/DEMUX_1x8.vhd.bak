@@ -1,0 +1,36 @@
+library ieee;
+
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+entity DEMUX_1x8 is
+	port
+	(
+		-- 1 input line of DEMUX.
+		input	:	in	std_logic;	
+
+		-- To select any of the 8 inputs we need a selector of 3 bits.
+		sel	:	in	std_logic_vector (2 downto 0);
+
+		-- 8 output lines of the DEMUX	
+		outputs	:	out	std_logic_vector (7 downto 0)
+	);
+end DEMUX_1x8;
+
+
+architecture behaviour of DEMUX_1x8 is
+begin
+	process(sel)
+	begin
+		case sel is
+			when "000" 	=> outputs <= "00000001";
+			when "001" 	=> outputs <= "00000010";
+			when "010" 	=> outputs <= "00000100";
+			when "011" 	=> outputs <= "00001000";
+			when "100" 	=> outputs <= "00010000";
+			when "101" 	=> outputs <= "00100000";
+			when "110" 	=> outputs <= "01000000";
+			when others 	=> outputs <= "10000000";
+		end case;
+	end process;
+end behaviour;

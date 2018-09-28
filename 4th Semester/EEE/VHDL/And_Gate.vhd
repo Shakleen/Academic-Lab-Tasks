@@ -1,0 +1,21 @@
+library ieee;
+
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+
+entity And_Gate is
+	port
+	(
+		A, B	:	in	std_logic;
+		C	:	out	std_logic
+	);
+end And_Gate;
+
+
+architecture behaviour of And_Gate is
+begin
+	process(A, B)
+	begin
+		C <= A and B;
+	end process;
+end behaviour;
