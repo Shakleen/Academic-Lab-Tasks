@@ -11,3 +11,9 @@
 *.log
 *.gz
 *.tar
+*.blend
+*.blend1
+*.tif
+*.nam
+*.tr
+*.DBF
