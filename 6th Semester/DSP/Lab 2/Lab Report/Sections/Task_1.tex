@@ -1,0 +1,48 @@
+\documentclass[../main.tex]{subfiles}
+ 
+\begin{document}
+\section{First Task}
+\subsection{Question: Task 1}
+\emph{Write MATLAB code that will take a sinusoid and quantize it using b bits. Use the sinusoid x(t) = sin(t) in the interval t=0:0.1:4*pi. Quantize x(t) using b = 4, 8, 12 and 16 bits. For each case of b, plot the original signal, quantized signal and the quantization error.}
+
+\subsection{Theory: Quantization}
+An analog signal has no discrete number of values. This type of signal can take on any value within a specific range. However, this signal can't be processed efficiently due to this reason. Which is why for ease of storing and processing an analog signal is converted into a digital signal. The process of converting from analog to digital has 3 steps which are as follows:
+\begin{enumerate}
+    \item \textbf{Sampling:} The process of taking finite sets of readings. Turns continuous signals to discrete signals.
+    \item \textbf{Quantization:} The process of taking only discrete values per reading. Turns analog signals to digital signals.
+    \item \textbf{Encoding:} Giving each quantized value a specific code for representation in digital format.
+\end{enumerate}
+
+The steps of \emph{quantization} are listed below:
+\begin{enumerate}
+    \item Take the difference of min and max amplitude and save it as \emph{range}. 
+    \[range = max(amplitude) - min(amplitude)\]
+    
+    \item To perform quantization we need to know how many discrete value to divide \emph{range} into. Usually, this is a power of 2. So if we denote this as \emph{levels} we can write
+    \[levels = 2^n\]
+    \emph{where n is the number of encoding bits we wish to use.}
+    
+    \item Next, we find the \emph{step value} for quantization.
+    \[step value = \frac{range}{levels}\]
+    
+    \item This step value is the smallest step size in the quantization process. An analog reading will be converted to the closest discrete value which is a multiple of this step value in either the positive or negative direction.
+\end{enumerate}
+
+\subsection{MATLAB Code: quantize()}
+The code listed below demonstrates the quantization process.
+\lstinputlisting[language=Octave]{./Codes/quantize.m}
+
+\subsection{Test Run: quantize()}
+Running the function \emph{quantize(signal, bits)} for sin wave as signal and different values of bits
+\lstinputlisting[language=Octave]{./Codes/quantize_test.m}
+give the plots in \emph{Figure 1}. In each plot, the analog and digital signals are shown simultaneously.
+
+\begin{figure}[ht]
+    \caption{Quantization of analog signals}
+    \includegraphics[width=6cm, height=5cm]{./Figures/Quantize_4.jpg}
+    \includegraphics[width=6cm, height=5cm]{./Figures/Quantize_8.jpg}
+    \includegraphics[width=6cm, height=5cm]{./Figures/Quantize_12.jpg}
+    \includegraphics[width=6cm, height=5cm]{./Figures/Quantize_16.jpg}
+\end{figure}
+\end{document}
+

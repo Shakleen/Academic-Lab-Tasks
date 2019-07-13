@@ -1,0 +1,27 @@
+\documentclass[../main.tex]{subfiles}
+ 
+\begin{document}
+
+\section{Fifth Task}
+\subsection{Question: Task 5}
+\emph{Write a MATLAB function sigfold that takes a signal x(n) and returns the resulting signal y(n) = x(-n). Verify the correctness of your function by taking suitable signals as input/output and plotting them.}
+
+\subsection{Theory: Signal Folding}
+Folding a signal means reversing the axis the signal is on. Basically, shifting means $y(n) = x(-n)$. When a signal is folded the origin remains unchanged. However, the values on the positive part of the axis goes to the negative part of the axis and vise versa.
+
+\subsection{MATLAB Code: sigfold()}
+The code listed below implements a function that folds a signal.
+\lstinputlisting[language=Octave]{./Codes/sigfold.m}
+
+\subsection{Test Run: sigfold()}
+Running the function sigfold(inputSignal) for the signal $1, 4, 9, ..., 100$
+\lstinputlisting[language=Octave]{./Codes/sigfold_test.m}
+gives the output $100, 81, 64, ..., 9, 4, 1$ and shows the plot in \emph{Figure 7}.
+
+\begin{figure}[ht]
+    \centering
+    \caption{Folding signal}
+    \includegraphics[width=6cm, height=5cm]{./Figures/Sigfold.jpg}
+\end{figure}
+
+\end{document}

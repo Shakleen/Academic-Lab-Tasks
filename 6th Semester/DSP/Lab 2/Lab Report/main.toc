@@ -1,0 +1,46 @@
+\contentsline {section}{\numberline {1}First Task}{2}% 
+\contentsline {subsection}{\numberline {1.1}Question: Task 1}{2}% 
+\contentsline {subsection}{\numberline {1.2}Theory: Quantization}{2}% 
+\contentsline {subsection}{\numberline {1.3}MATLAB Code: quantize()}{3}% 
+\contentsline {subsection}{\numberline {1.4}Test Run: quantize()}{4}% 
+\contentsline {section}{\numberline {2}Second Task}{5}% 
+\contentsline {subsection}{\numberline {2.1}Question: Task 2}{5}% 
+\contentsline {subsection}{\numberline {2.2}Theory: Delta Signal}{5}% 
+\contentsline {subsection}{\numberline {2.3}MATLAB Function: delta()}{5}% 
+\contentsline {subsection}{\numberline {2.4}Test Run: delta()}{6}% 
+\contentsline {subsection}{\numberline {2.5}Theory: Unity Signal}{7}% 
+\contentsline {subsection}{\numberline {2.6}MATLAB Function: unity()}{7}% 
+\contentsline {subsection}{\numberline {2.7}Test Run: unity()}{7}% 
+\contentsline {subsection}{\numberline {2.8}Theory: Unitramp Signal}{7}% 
+\contentsline {subsection}{\numberline {2.9}MATLAB Function: unitramp()}{7}% 
+\contentsline {subsection}{\numberline {2.10}Test Run of unitramp Function}{8}% 
+\contentsline {section}{\numberline {3}Third Task}{9}% 
+\contentsline {subsection}{\numberline {3.1}Question: Task 3}{9}% 
+\contentsline {subsection}{\numberline {3.2}Theory: Even Odd Decomposition}{9}% 
+\contentsline {subsection}{\numberline {3.3}MATLAB Code: evenOddFunction()}{9}% 
+\contentsline {subsection}{\numberline {3.4}Test Run: evenOddFunction()}{10}% 
+\contentsline {section}{\numberline {4}Fourth Task}{10}% 
+\contentsline {subsection}{\numberline {4.1}Question: Task 4}{10}% 
+\contentsline {subsection}{\numberline {4.2}Theory: Shifting Signals}{11}% 
+\contentsline {subsection}{\numberline {4.3}MATLAB Code: sigshift()}{11}% 
+\contentsline {subsection}{\numberline {4.4}Test Run: sigshift()}{11}% 
+\contentsline {section}{\numberline {5}Fifth Task}{12}% 
+\contentsline {subsection}{\numberline {5.1}Question: Task 5}{12}% 
+\contentsline {subsection}{\numberline {5.2}Theory: Signal Folding}{12}% 
+\contentsline {subsection}{\numberline {5.3}MATLAB Code: sigfold()}{12}% 
+\contentsline {subsection}{\numberline {5.4}Test Run: sigfold()}{13}% 
+\contentsline {section}{\numberline {6}Sixth Task}{13}% 
+\contentsline {subsection}{\numberline {6.1}Question: Task 6}{13}% 
+\contentsline {subsection}{\numberline {6.2}Theory: Down Sampling}{13}% 
+\contentsline {subsection}{\numberline {6.3}MATLAB Code: downsample()}{14}% 
+\contentsline {subsection}{\numberline {6.4}Test Run: downsample()}{14}% 
+\contentsline {section}{\numberline {7}Seventh Task}{15}% 
+\contentsline {subsection}{\numberline {7.1}Question: Task 7}{15}% 
+\contentsline {subsection}{\numberline {7.2}Theory: Adding Signals}{15}% 
+\contentsline {subsection}{\numberline {7.3}MATLAB Code: sigadd()}{15}% 
+\contentsline {subsection}{\numberline {7.4}Test Run: sigadd()}{16}% 
+\contentsline {section}{\numberline {8}Eighth Task}{16}% 
+\contentsline {subsection}{\numberline {8.1}Question: Task 8}{16}% 
+\contentsline {subsection}{\numberline {8.2}Theory: Multiplying Signals}{16}% 
+\contentsline {subsection}{\numberline {8.3}MATLAB Code: sigmult()}{17}% 
+\contentsline {subsection}{\numberline {8.4}Test Run: sigmult()}{18}% 

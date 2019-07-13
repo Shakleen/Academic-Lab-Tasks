@@ -1,6 +1,7 @@
 function unity(n)
   % Creates a unity elementary signal.
   %
+  % Parameters:
   % n - The number which will be used for 
   % the range of the signal.
   

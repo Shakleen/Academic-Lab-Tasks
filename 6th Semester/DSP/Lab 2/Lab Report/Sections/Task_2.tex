@@ -1,0 +1,60 @@
+\documentclass[../main.tex]{subfiles}
+ 
+\begin{document}
+
+\section{Second Task}
+\subsection{Question: Task 2}
+\emph{Write MATLAB functions delta(n), unity(n) and unitramp(n) which will depict the elementary signals we read about in the class. Each of this functions, for a given value of n (n>0), plots the corresponding signals in the range of –n to n.}
+
+\subsection{Theory: Delta Signal}
+A \emph{delta elementary signal} has a value 1 in the index position of 0 and has the value 0 everywhere else. In other words, if $n = 0$ then $x(n) = 1$. Otherwise, $x(n) = 0$.
+
+\subsection{MATLAB Function: delta()}
+The code listed below implements a function that plots a delta elementary signal when executed.
+\lstinputlisting[language=Octave]{./Codes/delta.m}
+
+\subsection{Test Run: delta()}
+Running the function \emph{delta(n)} for n = 10 
+\lstinputlisting[language=Octave]{./Codes/delta_test.m}
+gives the plot in \emph{Figure 2}.
+
+\begin{figure}[ht]
+    \centering
+    \caption{Delta Elementary Signal}
+    \includegraphics[width=6cm, height=5cm]{./Figures/Delta.jpg}
+\end{figure}
+
+\subsection{Theory: Unity Signal}
+A \emph{unity signal} has value 1 for all non-negative indices and has value of 0 for all negative indices. In other words, if $n \ge 0$ then $x(n) = 1$. Otherwise, $x(n) = 0$.
+
+\subsection{MATLAB Function: unity()}
+\lstinputlisting[language=Octave]{./Codes/unity.m}
+
+\subsection{Test Run: unity()}
+Running the function \emph{unity(n)} for n = 10 
+\lstinputlisting[language=Octave]{./Codes/unity_test.m}
+gives the plot in \emph{Figure 3}.
+
+\begin{figure}[ht]
+    \centering
+    \caption{Unity Elementary Signal}
+    \includegraphics[width=6cm, height=5cm]{./Figures/Unity.jpg}
+\end{figure}
+
+\subsection{Theory: Unitramp Signal}
+A \emph{unitramp signal} has value equal to the value of the indices in non-negative indices and has the value of 0 for all negative indices. In other words, if $n \ge 0$ then $x(n) = n$. Otherwise, $x(n) = 0$.
+
+\subsection{MATLAB Function: unitramp()}
+\lstinputlisting[language=Octave]{./Codes/unitramp.m}
+
+\subsection{Test Run of unitramp Function}
+Running the function \emph{unitramp(n)} for n = 10 
+\lstinputlisting[language=Octave]{./Codes/unitramp_test.m}
+gives the plot in \emph{Figure 4}.
+
+\begin{figure}[ht]
+    \centering
+    \caption{Unitramp elementary signal}
+    \includegraphics[width=6cm, height=5cm]{./Figures/Unitramp.jpg}
+\end{figure}
+\end{document}

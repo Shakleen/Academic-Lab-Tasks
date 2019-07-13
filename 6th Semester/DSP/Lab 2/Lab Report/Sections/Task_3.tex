@@ -1,0 +1,29 @@
+\documentclass[../main.tex]{subfiles}
+ 
+\begin{document}
+
+\section{Third Task}
+\subsection{Question: Task 3}
+\emph{Write a MATLAB function that will take as input an arbitrary signal x(n) and divide it into Symmetric (even) and Antisymmetric (odd) parts and plots the three signals (original signal, even part and odd part) in the same plot.}
+
+\subsection{Theory: Even Odd Decomposition}
+Decomposing a signal into even and odd can be done using the following formulae:
+\[even(n) = \frac{x(n) + x(N-n)}{2} \]
+\[odd(n) = \frac{x(n) - x(N-n)}{2} \]
+
+\subsection{MATLAB Code: evenOddFunction()}
+The code listed below decomposes a signal into even and odd signal. The function also plots the signals in the same graph to give a visual representation of the signals.
+\lstinputlisting[language=Octave]{./Codes/evenOddFunction.m}
+
+\subsection{Test Run: evenOddFunction()}
+Running the function \emph{evenOddFunction(inputSignal)} for the signal $1, 4, 9, ..., 100$
+\lstinputlisting[language=Octave]{./Codes/evenOddFunction_test.m}
+gives the plot in \emph{Figure 5}.
+
+\begin{figure}[ht]
+    \centering
+    \caption{Even Odd Decomposition of Signal}
+    \includegraphics[width=6cm, height=5cm]{./Figures/Even_Odd_Signal.jpg}
+\end{figure}
+
+\end{document}

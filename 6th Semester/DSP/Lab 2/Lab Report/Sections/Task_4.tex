@@ -1,0 +1,30 @@
+\documentclass[../main.tex]{subfiles}
+ 
+\begin{document}
+\section{Fourth Task}
+\subsection{Question: Task 4}
+\emph{Write a MATLAB function sigshift that takes a signal x(n) and a shift value k as inputs and returns the resulting signal y(n) = x(n-k).}
+
+\subsection{Theory: Shifting Signals}
+Shifting a signal means getting the values earlier or later. Mathematically shifting is represented as $y(n) = x(n \pm k)$ Shifting is of two types which are:
+\begin{enumerate}
+    \item Delayed: Shifting a signal by a negative amount. k is negative.
+    \item Early: Shifting a signal by a positive amount. k is positive.
+\end{enumerate}
+
+\subsection{MATLAB Code: sigshift()}
+The code listed below implements a function that shifts a signal by k units.
+\lstinputlisting[language=Octave]{./Codes/sigshift.m}
+
+\subsection{Test Run: sigshift()}
+Running the function sigshift(inputSignal, k) for the signal $1, 2, 3, 4, 5$ and k = 2
+\lstinputlisting[language=Octave]{./Codes/sigshift_test.m}
+gives the result $0, 0, 1, 2, 3$ and shows the plot in \emph{Figure 6}.
+
+\begin{figure}[ht]
+    \centering
+    \caption{Shifting signals}
+    \includegraphics[width=6cm, height=5cm]{./Figures/Sigshift.jpg}
+\end{figure}
+\end{document}
+

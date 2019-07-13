@@ -3,7 +3,6 @@
 *.o
 *.exe
 *.mp4
-*.png
 *.jpg
 *.fls
 *.fdb_latexmk

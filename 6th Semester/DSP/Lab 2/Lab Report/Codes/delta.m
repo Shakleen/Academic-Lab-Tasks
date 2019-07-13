@@ -1,6 +1,7 @@
 function delta(n)
   % Creates a delta elementary signal.
   %
+  % Parameters:
   % n - The number which will be used for the 
   % range of the signal.
   

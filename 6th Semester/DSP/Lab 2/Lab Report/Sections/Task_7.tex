@@ -1,0 +1,28 @@
+\documentclass[../main.tex]{subfiles}
+ 
+\begin{document}
+
+\section{Seventh Task}
+\subsection{Question: Task 7}
+\emph{Write a MATLAB function sigadd that takes two signals x1(n) and x2(n) as inputs and returns the resulting signal y(n) = x1(n)+x2(n).}
+
+\subsection{Theory: Adding Signals}
+Adding two signals results in a signal where the resultant signal follows the follwing mathematical expression:
+\[y(n) = x_1(n) + x_2(n) \]
+
+\subsection{MATLAB Code: sigadd()}
+The code listed below implements a function that adds two signal.
+\lstinputlisting[language=Octave]{./Codes/sigadd.m}
+
+\subsection{Test Run: sigadd()}
+Running this command 
+\lstinputlisting[language=Octave]{./Codes/sigadd_test.m}
+gives the plot in \emph{Figure 9}.
+
+\begin{figure}[ht]
+    \centering
+    \caption{Adding signals}
+    \includegraphics[width=6cm, height=5cm]{./Figures/Sigadd.jpg}
+\end{figure}
+
+\end{document}

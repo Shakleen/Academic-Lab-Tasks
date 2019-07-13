@@ -1,0 +1,28 @@
+\documentclass[../main.tex]{subfiles}
+ 
+\begin{document}
+
+\section{Sixth Task}
+\subsection{Question: Task 6}
+\emph{Write a MATLAB function downsample that takes a signal x(n) and a value d (d is an integer, d>1) and returns the down-sampled signal y(n) = x(dn). Verify the correctness by plotting suitable input/output signals.}
+
+\subsection{Theory: Down Sampling}
+Down sampling a signal means taking a smaller subset of readings of the signal. Mathematically, $y(n) = x(dn)$ where d is the amount of down sampling applied.
+
+\subsection{MATLAB Code: downsample()}
+The code listed below implements a function that downsamples a signal.
+\lstinputlisting[language=Octave]{./Codes/downsample.m}
+
+\subsection{Test Run: downsample()}
+Running the function downsample(inputSignal, d) for the signal $1, 4, 9, ..., 144$ and d = 2, 3
+\lstinputlisting[language=Octave]{./Codes/downsample_test.m}
+gives the result $0, 4, 0, 16, 0, 36, 0, 64, 0, 100, 0, 144$ and shows the plot in \emph{Figure 8}.
+
+\begin{figure}[ht]
+    \centering
+    \caption{Down Sampling Signals}
+    \includegraphics[width=6cm, height=5cm]{./Figures/Down_Sample_2.jpg}
+    \includegraphics[width=6cm, height=5cm]{./Figures/Down_Sample_3.jpg}
+\end{figure}
+
+\end{document}

@@ -1,5 +1,5 @@
-function uniramp(n)
-  % Creates a uniramp elementary signal.
+function unitramp(n)
+  % Creates a unitramp elementary signal.
   %
   % n - The number which will be used for
   % the range of the signal.
@@ -20,7 +20,7 @@ function uniramp(n)
   % Plotting signal value with respect to time.
   set(0, "defaultaxesfontname", "Helvetica");
   stem(time, signal);
-  plotTitle = sprintf('Uniramp Signal in range (%d, -%d)', n, n);
+  plotTitle = sprintf('Unitramp Signal in range (%d, -%d)', n, n);
   title(plotTitle);
   xlabel("Time");
   ylabel("Value");

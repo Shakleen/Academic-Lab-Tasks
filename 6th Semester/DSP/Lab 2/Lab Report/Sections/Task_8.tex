@@ -1,0 +1,28 @@
+\documentclass[../main.tex]{subfiles}
+ 
+\begin{document}
+
+\section{Eighth Task}
+\subsection{Question: Task 8}
+\emph{Write a MATLAB function sigmult that takes two signals x1(n) and x2(n) as inputs and returns the resulting signal y(n) = x1(n)*x2(n).}
+
+\subsection{Theory: Multiplying Signals}
+Multiplying two signals results in a signal where the resultant signal follows the follwing mathematical expression:
+\[y(n) = x_1(n) * x_2(n) \]
+
+\subsection{MATLAB Code: sigmult()}
+The code listed below implements a function that multiplies two signal.
+\lstinputlisting[language=Octave]{./Codes/sigmult.m}
+
+\subsection{Test Run: sigmult()}
+Running this command 
+\lstinputlisting[language=Octave]{./Codes/sigmult_test.m}
+gives the plot in \emph{Figure 10}.
+
+\begin{figure}[ht]
+    \centering
+    \caption{Multiplying signals}
+    \includegraphics[width=6cm, height=5cm]{./Figures/Sigmult.jpg}
+\end{figure}
+
+\end{document}
