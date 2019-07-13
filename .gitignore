@@ -1,0 +1,13 @@
+*.zip
+*.rar
+*.o
+*.exe
+*.mp4
+*.png
+*.jpg
+*.fls
+*.fdb_latexmk
+*.aux
+*.log
+*.gz
+*.tar
