@@ -1,3 +1,4 @@
+\babel@toc {english}{}
 \contentsline {section}{\numberline {1}First Task}{2}% 
 \contentsline {subsection}{\numberline {1.1}Question: Task 1}{2}% 
 \contentsline {subsection}{\numberline {1.2}Theory: Quantization}{2}% 
@@ -6,14 +7,14 @@
 \contentsline {section}{\numberline {2}Second Task}{5}% 
 \contentsline {subsection}{\numberline {2.1}Question: Task 2}{5}% 
 \contentsline {subsection}{\numberline {2.2}Theory: Delta Signal}{5}% 
-\contentsline {subsection}{\numberline {2.3}MATLAB Function: delta()}{5}% 
+\contentsline {subsection}{\numberline {2.3}MATLAB Function: delta()}{6}% 
 \contentsline {subsection}{\numberline {2.4}Test Run: delta()}{6}% 
-\contentsline {subsection}{\numberline {2.5}Theory: Unity Signal}{7}% 
-\contentsline {subsection}{\numberline {2.6}MATLAB Function: unity()}{7}% 
+\contentsline {subsection}{\numberline {2.5}Theory: Unity Signal}{6}% 
+\contentsline {subsection}{\numberline {2.6}MATLAB Function: unity()}{6}% 
 \contentsline {subsection}{\numberline {2.7}Test Run: unity()}{7}% 
 \contentsline {subsection}{\numberline {2.8}Theory: Unitramp Signal}{7}% 
 \contentsline {subsection}{\numberline {2.9}MATLAB Function: unitramp()}{7}% 
-\contentsline {subsection}{\numberline {2.10}Test Run of unitramp Function}{8}% 
+\contentsline {subsection}{\numberline {2.10}Test Run: unitramp()}{8}% 
 \contentsline {section}{\numberline {3}Third Task}{9}% 
 \contentsline {subsection}{\numberline {3.1}Question: Task 3}{9}% 
 \contentsline {subsection}{\numberline {3.2}Theory: Even Odd Decomposition}{9}% 

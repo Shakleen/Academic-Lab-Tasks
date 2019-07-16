@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Nvidia 2070 Super"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:text="Cancel"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:text="Ok"
+        app:layout_constraintBaseline_toBaselineOf="@+id/button"
+        app:layout_constraintEnd_toStartOf="@+id/button" />
+
+    <EditText
+        android:id="@+id/editText3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:ems="10"
+        android:gravity="start|top"
+        android:inputType="textMultiLine"
+        android:scrollIndicators="end|right"
+        android:scrollbars="vertical"
+        android:text="So here I am just finished re-testing all of my graphics cards under the new drivers for the GeForce RTX 2060/2070 SUPER graphics cards as well as the new Radeon RX 5700 series cards, in all of my synthetic and gaming tests at 1080p, 1440p, 4K when I think of testing SUPER in NVLink. I've been sitting at my desk for 16-20 hours a day benchmarking, testing, reading, and writing for all of this content that started with SUPER, will go into Navi in a couple of days, and then there is a mountain of content that I have in the works after that.  Read more: https://www.tweaktown.com/articles/9047/nvidia-geforce-rtx-2070-super-nvlink-benchmarked/index.html  As I said, I'm sitting here benching and writing when the thought comes to me: 'Anthony, you have TWO new GeForce RTX 2070 SUPER cards... and they support NVLink... why are you not testing them?' It was like a slap to my face, how could I have NOT tested these bad boys in multi-GPU?! It's almost offensive to not have tested them in my lab already, so away I went - grabbed my NVLink bridge and hooked up the two RTX 2070 SUPER cards I have here already.     Back in 2000s some of you will know I worked in IT retail selling custom PCs and computer parts, and back in those days I would sometimes (and not always) recommend multi-GPU setups. It was a different time for multi-GPU back then, and things haven't gotten better -- instead, it's worse. This article isn't acting as me recommending anyone buy two RTX 2070 SUPER graphics cards and throw them in NVLink, but more of a &quot;I have two cards here and want to show you what they can do because WHY NOT&quot;."
+        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText"
+        app:layout_constraintVertical_bias="0.0" />
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -26,6 +26,10 @@ function quantize(signal, bits)
     % orignal analog signal.
     quantizedValues = zeros(1, readings);
     
+    % Saves the difference between original and quantized
+    % value.
+    error = zeros(1, readings);
+    
     % Used to specify exactly which reading is being 
     % quantized.
     index = 1;
@@ -42,6 +46,12 @@ function quantize(signal, bits)
       % value.
       tempValue = round(analogReading / stepValue);
       quantizedValue(index) = tempValue * stepValue;
+      
+      % Calculating error.
+      difference = analogReading - quantizedValue(index);
+      error(index) = abs(difference);
+      
+      % Incrementing index.
       index += 1;
     endfor
     
@@ -51,11 +61,12 @@ function quantize(signal, bits)
     hold on;
     plot(signal(interval), 'r');
     plot(quantizedValue, 'b');
+    plot(error, 'g');
     plotTitle = sprintf('Quatizing signal with %d bits', bits);
     title(plotTitle);
     xlabel("Time");
     ylabel("Angel");
-    legend("Analog Signal", "Discrete Signal");
+    legend("Analog Signal", "Discrete Signal", "Error");
     print -djpg ../Figures/Quantize.jpg
     hold off;
 endfunction
