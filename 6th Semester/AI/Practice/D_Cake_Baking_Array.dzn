@@ -1,0 +1,8 @@
+ingrediant_types = 5;
+cake_types = 2;
+ingrediant_names = ["flour", "banana", "sugar", "butter", "cocoa"];
+cake_names = ["banana", "chocolate"];
+ingrediant_stock = [4000, 6, 2000, 500, 500];
+cake_requirements = [| 250, 2, 75, 100, 0 
+                     | 200, 0, 150, 150, 75 |];
+cake_prices = [4.00, 4.50];

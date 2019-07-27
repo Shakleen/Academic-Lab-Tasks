@@ -1,0 +1,3 @@
+convSignals([3 2 5 7 9 8 17 2], [2 0 1 4])
+InputSideConvolution([3 2 5 7 9 8 17 2], [2 0 1 4])
+OutputSideConvolution([3 2 5 7 9 8 17 2], [2 0 1 4])

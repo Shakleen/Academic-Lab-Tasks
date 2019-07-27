@@ -1,0 +1,33 @@
+% Fuel related parameters
+fuels = 1..3;
+fuel_name = ["Diesel", "Petrol", "Natural Gas"];
+fuel_price = [0.140, 0.125, 0.110]; % In scale of 1k
+
+% Routes information
+routes = 1..3;
+route_name = ["Uttara-Banani-Mohakhali", "Airport-Badda-Malibagh", "Boardbazar-Airport-Mirpur"];
+route_distances = [20, 25, 30]; % In scale of 1
+route_passengers = [500, 1500, 1000]; % In scale of 1
+
+% Vehicle related parameters
+vehicles = 1..5;
+vehicle_name = ["Toyota", "VolksWagon", "Nissan", "Hyundai", "Mitsubishi"];
+vehicle_price = [10.1, 20.9, 15.3, 24.2, 18.5]; % In the scale of 100k
+vehicle_seats = [4, 8, 4, 8, 6]; % In scale of 1
+vehicle_mileage = [22.5, 40.1, 28.3, 26.8, 24.2];
+vehicle_fuel_type = [2, 1, 3, 3, 1];
+
+% Investment amount
+initial_investment = 10000; % In the scale of 100k
+
+% Total fuel budget for all cars
+monthly_fuel_budget = 5500.00; % In scale of 1k
+
+% Total employees
+% total_employees = 2500;
+
+% Routes distance
+% route_distance = 25.5;
+
+% Percentage to charge upon monthly fuel cost for profit
+charge_percentage = 2.0;

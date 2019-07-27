@@ -1,0 +1,55 @@
+\documentclass[twocolumn]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+
+\title{Technical Report Writing Lab 3}
+\author{
+    Shakleen Ishfar\\
+    Student, IUT 
+    }
+\date{08 July, 2019}
+
+\usepackage{natbib}
+\usepackage{graphicx}
+
+\begin{document}
+
+\maketitle
+
+This is an inline equation $a + b = c$
+
+This is display mode
+\begin{equation}
+    a + b = c
+\end{equation}
+
+Subscript and superscript: $a_{i,j}^{k,m} = b_i^j$
+
+Practice: $a_1^2 + a_2^2 = a_3^2$
+
+Practice 2: ${a^4}^2$
+
+Practice 4: $\frac{numerator}{denominator}$
+
+Practice 5: 
+\begin{equation}
+    \sum_{i=1}^{\infty}{\frac{1}{n^s}} = \prod_{p}{\frac{1}{1-p^{-s}}}
+\end{equation}
+
+\begin{align}
+    \text{max } \quad &ax^2 + 3\\ 
+    \text{subject to } \quad &x \ge 1 
+    \label{Equation max}
+\end{align}
+
+Let us refer to \ref{Equation max}
+
+\begin{equation}
+    p(x) = 
+    \begin{cases}
+        1 \text{ when } i = 0\\
+        0 \text{ when } i \ne 0
+    \end{cases}
+\end{equation}
+
+\end{document}
