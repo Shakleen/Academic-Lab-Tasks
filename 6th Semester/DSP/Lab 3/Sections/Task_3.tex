@@ -1,0 +1,24 @@
+\documentclass[../main.tex]{subfiles}
+ 
+\begin{document}
+\section{Third Task}
+\subsection{Question: Task 3}
+\emph{Write another function OutputSideConvolutionthat uses the Output Side Algorithm.}
+
+\subsection{Theory: Output Side Algorithm}
+THe output side algorithm shows how one output signal sample is influenced by many samples of different input signal samples. The general formula followed by the output side algorithm is
+\begin{equation}
+    y[i] = \sum_{j=1}^{M}{h[j] * s[i - j + 1]}
+\end{equation}
+Here, y[i] is the i-th sample of output signal, h is the impulse response and s is the input signal.
+
+\subsection{MATLAB Code: outputSideAlgorithm()}
+The code listed below convolutes signal s and h using the the output side algorithm:
+\lstinputlisting[language=Octave]{./Codes/outputSideAlgorithm.m}
+
+\subsection{Test Run: outputSideAlgorithm()}
+The following code snippet runs \emph{outputSideAlgorithm(s, h)}:
+\lstinputlisting[language=Octave]{./Codes/test_outputSideAlgorithm.m}
+
+\end{document}
+

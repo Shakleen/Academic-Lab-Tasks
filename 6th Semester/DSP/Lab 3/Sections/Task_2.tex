@@ -1,0 +1,20 @@
+\documentclass[../main.tex]{subfiles}
+ 
+\begin{document}
+\section{Second Task}
+\subsection{Question: Task 2}
+\emph{Write a custom function InputSideConvolutionthat implements convolution using the Input Side Algorithm.}
+
+\subsection{Theory: Input Side Algorithm}
+The input side algorithm shows how samples from the input signal influences many output signal samples. In the input side algorithm, we multiply each input sample with the impulse response to produce n number of signals. Here, n is the number of samples in the input signal. Then these n signals are added to produce the output signal. The appropriate samples of the same index are added with each other. The sum of all the signals is the result of convolution of input and impulse response signals.
+
+\subsection{MATLAB Code: inputSideAlgorithm()}
+The code listed below convolutes signal s and h using the the input side algorithm:
+\lstinputlisting[language=Octave]{./Codes/inputSideAlgorithm.m}
+
+\subsection{Test Run: inputSideAlgorithm()}
+The following code snippet runs \emph{inputSideAlgorithm(s, h)}:
+\lstinputlisting[language=Octave]{./Codes/test_inputSideAlgorithm.m}
+
+\end{document}
+

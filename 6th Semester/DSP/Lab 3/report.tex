@@ -1,0 +1,48 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{xcolor}
+\usepackage[english]{babel}
+\usepackage{graphicx}
+\graphicspath{{Figures/}{../Figures/}}
+\usepackage{subfiles}
+\usepackage{listings}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{codeStyle}{
+    backgroundcolor=\color{backcolour},
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{blue},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{magenta},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+\lstset{style=codeStyle}
+
+\title{Digital Signal Processing - Lab 3 Report}
+\author{Shakleen Ishfar\\ID: 160041029}
+\date{18 July, 2019}
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+\subfile{Sections/Task_1.tex}
+\subfile{Sections/Task_2.tex}
+\subfile{Sections/Task_3.tex}
+\subfile{Sections/Task_4.tex}
+\subfile{Sections/Appendix.tex}
+
+\end{document}
