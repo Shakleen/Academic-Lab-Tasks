@@ -1,0 +1,48 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{subfiles}
+\usepackage{xcolor}
+\usepackage[english]{babel}
+\usepackage{graphicx}
+\usepackage{listings}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{codeStyle} {
+    backgroundcolor=\color{backcolour},
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{blue},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{magenta},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+\lstset{style=codeStyle}
+
+\begin{document}
+
+\subfile{Sections/0_Title.tex}
+
+\subfile{Sections/1_Introduction.tex}
+
+\subfile{Sections/2_Problem_Formulation.tex}
+
+\subfile{Sections/3_General_Solution.tex}
+
+\subfile{Sections/4_Example.tex}
+
+\subfile{Sections/5_Complexity_Analysis.tex}
+
+
+\end{document}
